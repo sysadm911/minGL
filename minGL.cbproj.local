@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.584,=C:\Users\User\Documents\RAD Studio\Projects\Project1.res</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.036,=C:\Users\User\Documents\RAD Studio\Projects\Project1.res</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.990,=C:\Users\User\Documents\RAD Studio\Projects\Project1.res</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.048,=C:\Users\User\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.000,=C:\Users\User\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.596,=C:\Users\User\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2020.06.24 17:46:41.930,=C:\Users\User\Documents\RAD Studio\Projects\Project1.res</Transaction>
+    <Transaction>2020.06.24 17:46:41.941,=C:\Users\User\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2020.06.24 19:09:22.226,C:\Users\User\Documents\RAD Studio\Projects\minGL\frmGL_unit.dfm=C:\Users\User\Documents\RAD Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2020.06.24 19:09:22.226,C:\Users\User\Documents\RAD Studio\Projects\minGL\frmGL_unit.cpp=C:\Users\User\Documents\RAD Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2020.06.24 19:09:22.226,C:\Users\User\Documents\RAD Studio\Projects\minGL\frmGL_unit.h=C:\Users\User\Documents\RAD Studio\Projects\Unit1.h</Transaction>
+    <Transaction>2020.06.24 19:09:33.919,C:\Users\User\Documents\RAD Studio\Projects\minGL\minGL.cbproj=C:\Users\User\Documents\RAD Studio\Projects\Project1.cbproj</Transaction>
+  </Transactions>
+</BorlandProject>
