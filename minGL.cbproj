@@ -24,9 +24,9 @@
 		</PropertyGroup>
 		<PropertyGroup Condition="'$(Base)'!=''">
 			<ProjectType>CppVCLApplication</ProjectType>
-			<LinkPackageStatics>rtl.lib;vcl.lib</LinkPackageStatics>
+			<LinkPackageStatics>rtl.lib;vcl.lib;RaizeComponentsVcl.lib;vclx.lib</LinkPackageStatics>
 			<PackageImports>vcl.bpi;rtl.bpi;bcbie.bpi;vclx.bpi;vclactnband.bpi;xmlrtl.bpi;bcbsmp.bpi;VclSmp.bpi;vclimg.bpi;svnui.bpi;svn.bpi;bdertl.bpi;TeeUI.bpi;TeeDB.bpi;Tee.bpi;vcldb.bpi;dbrtl.bpi;vcldbx.bpi;vcltouch.bpi;dsnap.bpi;dsnapcon.bpi;vclib.bpi;ibxpress.bpi;adortl.bpi;IndyCore.bpi;IndySystem.bpi;IndyProtocols.bpi;inet.bpi;intrawebdb_110_150.bpi;Intraweb_110_150.bpi;vclie.bpi;websnap.bpi;webdsnap.bpi;inetdb.bpi;inetdbbde.bpi;inetdbxpress.bpi;soaprtl.bpi;vclribbon.bpi;dbexpress.bpi;DbxCommonDriver.bpi;DataSnapIndy10ServerTransport.bpi;DataSnapProviderClient.bpi;DbxClientDriver.bpi;DataSnapClient.bpi;dbxcds.bpi;DataSnapServer.bpi;AzureCloud.bpi;DBXInterBaseDriver.bpi;DBXMySQLDriver.bpi;DBXFirebirdDriver.bpi;DBXSybaseASEDriver.bpi;DBXSybaseASADriver.bpi;DBXOracleDriver.bpi;DBXMSSQLDriver.bpi;DBXInformixDriver.bpi;DBXDb2Driver.bpi;CodeSiteExpressVcl.bpi;RaizeComponentsVcl.bpi;RaizeComponentsVclDb.bpi;BComPortD7.bpi</PackageImports>
-			<AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+			<AllPackageLibs>rtl.lib;vcl.lib;RaizeComponentsVcl.lib;vclx.lib</AllPackageLibs>
 			<Multithreaded>true</Multithreaded>
 			<IncludePath>minGL\;GLapp\;$(IncludePath)</IncludePath>
 			<_TCHARMapping>wchar_t</_TCHARMapping>
@@ -64,7 +64,7 @@
 		</PropertyGroup>
 		<ItemGroup>
 			<CppCompile Include="frmGL_unit.cpp">
-				<Form>Form1</Form>
+				<Form>frmGL</Form>
 				<DependentOn>frmGL_unit.h</DependentOn>
 				<BuildOrder>2</BuildOrder>
 			</CppCompile>
@@ -72,7 +72,6 @@
 				<BuildOrder>0</BuildOrder>
 			</CppCompile>
 			<ResFiles Include="minGL.res">
-				<ModuleName>minGL.res</ModuleName>
 				<BuildOrder>1</BuildOrder>
 			</ResFiles>
 			<FormResources Include="frmGL_unit.dfm"/>

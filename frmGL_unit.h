@@ -14,8 +14,12 @@
 #include "RzButton.hpp"
 #include <ImgList.hpp>
 #include <Dialogs.hpp>
+#include <math.h>
+#include "RzSplit.hpp"
+#include <Menus.hpp>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#define Pi M_PI
 
 // ---------------------------------------------------------------------------
 class TfrmGL : public TForm {
@@ -29,18 +33,42 @@ __published: // IDE-managed Components
 	TColorDialog *ColorDialog1;
 	TRzPanel *RzPanel1;
 	TRzFieldStatus *RzFieldStatus1;
+	TRzSplitter *RzSplitter1;
+	TRzPanel *RzPanel2;
+	TRzSpacer *RzSpacer1;
+	TRzToolButton *RzToolButton2;
+	TPopupMenu *PopupMenu1;
+	TMenuItem *OpenGLGDI1;
+	TMenuItem *OpenGL1;
+	TMenuItem *OpenGLlines1;
+	TMenuItem *OpenGLOxOy1;
+	TMenuItem *BezierCurvewithFourControlPoints1;
+	TMenuItem *OpenGLlinesstrip1;
+	TMenuItem *OpenGLlinesloop1;
+	TMenuItem *Randomlines1;
+	TMenuItem *riangles1;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormDestroy(TObject *Sender);
 	void __fastcall RzToolButton1Click(TObject *Sender);
 	void __fastcall RzPanel1Paint(TObject *Sender);
-	void __fastcall RzPanel1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall OpenGLGDI2Click(TObject *Sender);
+	void __fastcall OpenGL1Click(TObject *Sender);
+	void __fastcall OpenGLlines1Click(TObject *Sender);
+	void __fastcall OpenGLOxOy1Click(TObject *Sender);
+	void __fastcall BezierCurvewithFourControlPoints1Click(TObject *Sender);
+	void __fastcall OpenGLlinesstrip1Click(TObject *Sender);
+	void __fastcall OpenGLlinesloop1Click(TObject *Sender);
+	void __fastcall RzPanel2MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall Randomlines1Click(TObject *Sender);
+	void __fastcall RzPanel2Paint(TObject *Sender);
+	void __fastcall riangles1Click(TObject *Sender);
 
 private: // User declarations
-	HWND hwnd;
-	HGLRC hrc;
-	HDC dc;
+	HWND hwnd1,hwnd2;
+	HGLRC hrc1,hrc2;
+	HDC dc1,dc2;
 	GLfloat R, G, B, xpos, ypos;
-
+	bool mode1;
 	void __fastcall SetDCPixelFormat(HDC hdc);
 	void __fastcall ColorToGL(TColor c, GLfloat &R, GLfloat &G, GLfloat &B);
 public: // User declarations
