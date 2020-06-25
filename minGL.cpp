@@ -1,35 +1,31 @@
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
 #include <vcl.h>
 #pragma hdrstop
 #include <tchar.h>
-//---------------------------------------------------------------------------
-USEFORM("frmGL_unit.cpp", Form1);
-//---------------------------------------------------------------------------
-WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
-{
-	try
-	{
+// ---------------------------------------------------------------------------
+USEFORM("frmGL_unit.cpp", frmGL);
+
+// ---------------------------------------------------------------------------
+WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int) {
+	try {
 		Application->Initialize();
 		Application->MainFormOnTaskBar = true;
-		Application->CreateForm(__classid(TForm1), &Form1);
+		Application->CreateForm(__classid(TfrmGL), &frmGL);
 		Application->Run();
+
 	}
-	catch (Exception &exception)
-	{
+	catch (Exception &exception) {
 		Application->ShowException(&exception);
 	}
-	catch (...)
-	{
-		try
-		{
+	catch (...) {
+		try {
 			throw Exception("");
 		}
-		catch (Exception &exception)
-		{
+		catch (Exception &exception) {
 			Application->ShowException(&exception);
 		}
 	}
 	return 0;
 }
-//---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
