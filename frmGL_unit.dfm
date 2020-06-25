@@ -12,6 +12,7 @@ object frmGL: TfrmGL
   Font.Style = []
   OldCreateOrder = False
   Position = poScreenCenter
+  WindowState = wsMaximized
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   PixelsPerInch = 96
@@ -56,18 +57,74 @@ object frmGL: TfrmGL
       FieldLabel = 'RGB:'
       FieldLabelColor = clInfoText
     end
+    object RzGL_VENDOR: TRzFieldStatus
+      Left = 424
+      Top = 0
+      Width = 112
+      Height = 19
+      Align = alRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      FieldLabel = 'GL_VENDOR:'
+      FieldLabelColor = clGray
+      AutoSize = True
+      ExplicitLeft = 418
+      ExplicitTop = 6
+    end
+    object RzGL_RENDERER: TRzFieldStatus
+      Left = 536
+      Top = 0
+      Width = 125
+      Height = 19
+      Align = alRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      FieldLabel = 'GL_RENDERER:'
+      FieldLabelColor = clGray
+      AutoSize = True
+      ExplicitLeft = 548
+    end
+    object RzGL_VERSION: TRzFieldStatus
+      Left = 661
+      Top = 0
+      Width = 116
+      Height = 19
+      Align = alRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      FieldLabel = 'GL_VERSION:'
+      FieldLabelColor = clGray
+      AutoSize = True
+      ExplicitLeft = 667
+    end
   end
   object RzToolbar1: TRzToolbar
     Left = 0
     Top = 0
     Width = 984
-    Height = 29
+    Height = 31
+    AutoStyle = False
+    Margin = 1
+    TopMargin = 1
+    RowHeight = 29
     ButtonWidth = 60
     ShowButtonCaptions = True
     TextOptions = ttoCustom
     BorderInner = fsNone
-    BorderOuter = fsGroove
-    BorderSides = [sdTop]
+    BorderOuter = fsStatus
+    BorderSides = [sdLeft, sdTop, sdRight, sdBottom]
     BorderWidth = 0
     TabOrder = 1
     ToolbarControls = (
@@ -75,10 +132,11 @@ object frmGL: TfrmGL
       RzSpacer1
       RzToolButton2)
     object RzToolButton1: TRzToolButton
-      Left = 4
-      Top = 2
+      Left = 1
+      Top = 3
       Width = 83
       Hint = #1062#1074#1077#1090' '#1092#1086#1085#1072
+      Flat = False
       ImageIndex = 4
       Images = ImageList1
       ShowCaption = True
@@ -91,14 +149,15 @@ object frmGL: TfrmGL
       OnClick = RzToolButton1Click
     end
     object RzSpacer1: TRzSpacer
-      Left = 87
-      Top = 2
+      Left = 84
+      Top = 3
     end
     object RzToolButton2: TRzToolButton
-      Left = 95
-      Top = 2
+      Left = 92
+      Top = 3
       Width = 88
       DropDownMenu = PopupMenu1
+      Flat = False
       ImageIndex = 12
       Images = ImageList1
       ToolStyle = tsDropDown
@@ -107,18 +166,20 @@ object frmGL: TfrmGL
   end
   object RzSplitter1: TRzSplitter
     Left = 0
-    Top = 29
+    Top = 31
     Width = 984
-    Height = 538
+    Height = 536
     Position = 491
     UsePercent = True
     Align = alClient
     TabOrder = 2
+    ExplicitTop = 29
+    ExplicitHeight = 538
     BarSize = (
       491
       0
       495
-      538)
+      536)
     UpperLeftControls = (
       RzPanel1)
     LowerRightControls = (
@@ -127,30 +188,32 @@ object frmGL: TfrmGL
       Left = 0
       Top = 0
       Width = 491
-      Height = 538
+      Height = 536
       Align = alClient
       BorderOuter = fsFlat
       TabOrder = 0
       OnPaint = RzPanel1Paint
       OnResize = RzPanel1Paint
+      ExplicitHeight = 538
     end
     object RzPanel2: TRzPanel
       Left = 0
       Top = 0
       Width = 489
-      Height = 538
+      Height = 536
       Align = alClient
       BorderOuter = fsFlat
       TabOrder = 0
       OnMouseMove = RzPanel2MouseMove
       OnPaint = RzPanel2Paint
+      ExplicitHeight = 538
     end
   end
   object ImageList1: TImageList
     Left = 152
     Top = 48
     Bitmap = {
-      494C01010E003400440010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E003400480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -718,6 +781,7 @@ object frmGL: TfrmGL
     end
     object BezierCurvewithFourControlPoints1: TMenuItem
       Caption = 'Bezier Curve with 4 Control Points'
+      Checked = True
       OnClick = BezierCurvewithFourControlPoints1Click
     end
     object Randomlines1: TMenuItem
@@ -727,6 +791,26 @@ object frmGL: TfrmGL
     object riangles1: TMenuItem
       Caption = 'Triangles'
       OnClick = riangles1Click
+    end
+    object Rectangle1: TMenuItem
+      Caption = 'Rectangles'
+      OnClick = Rectangle1Click
+    end
+    object Disk1: TMenuItem
+      Caption = 'Disk'
+      OnClick = Disk1Click
+    end
+    object DrawVertexArray1: TMenuItem
+      Caption = 'Draw VertexArray'
+      OnClick = DrawVertexArray1Click
+    end
+    object DrawVertexArrayround1: TMenuItem
+      Caption = 'Draw VertexArray (round)'
+      OnClick = DrawVertexArrayround1Click
+    end
+    object P1: TMenuItem
+      Caption = 'Draw Pixels'
+      OnClick = P1Click
     end
   end
 end

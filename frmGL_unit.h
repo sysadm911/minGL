@@ -47,6 +47,14 @@ __published: // IDE-managed Components
 	TMenuItem *OpenGLlinesloop1;
 	TMenuItem *Randomlines1;
 	TMenuItem *riangles1;
+	TMenuItem *Rectangle1;
+	TMenuItem *Disk1;
+	TMenuItem *DrawVertexArray1;
+	TMenuItem *DrawVertexArrayround1;
+	TMenuItem *P1;
+	TRzFieldStatus *RzGL_VENDOR;
+	TRzFieldStatus *RzGL_RENDERER;
+	TRzFieldStatus *RzGL_VERSION;
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormDestroy(TObject *Sender);
 	void __fastcall RzToolButton1Click(TObject *Sender);
@@ -62,6 +70,11 @@ __published: // IDE-managed Components
 	void __fastcall Randomlines1Click(TObject *Sender);
 	void __fastcall RzPanel2Paint(TObject *Sender);
 	void __fastcall riangles1Click(TObject *Sender);
+	void __fastcall Rectangle1Click(TObject *Sender);
+	void __fastcall Disk1Click(TObject *Sender);
+	void __fastcall DrawVertexArray1Click(TObject *Sender);
+	void __fastcall DrawVertexArrayround1Click(TObject *Sender);
+	void __fastcall P1Click(TObject *Sender);
 
 private: // User declarations
 	HWND hwnd1,hwnd2;
