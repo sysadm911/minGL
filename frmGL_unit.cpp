@@ -1,4 +1,4 @@
-// ---------------------------------------------------------------------------
+п»ї// ---------------------------------------------------------------------------
 
 #include <vcl.h>
 #pragma hdrstop
@@ -29,7 +29,7 @@ __fastcall TfrmGL::TfrmGL(TComponent* Owner) : TForm(Owner) {
 // }
 
 /* =======================================================================
- Формат пикселя */
+ Р¤РѕСЂРјР°С‚ РїРёРєСЃРµР»СЏ */
 void __fastcall TfrmGL::SetDCPixelFormat(HDC hdc) {
 	PIXELFORMATDESCRIPTOR pfd;
 	int nPixelFormat = 0;
@@ -41,7 +41,7 @@ void __fastcall TfrmGL::SetDCPixelFormat(HDC hdc) {
 }
 
 /* =======================================================================
- Создание формы */
+ РЎРѕР·РґР°РЅРёРµ С„РѕСЂРјС‹ */
 void __fastcall TfrmGL::FormCreate(TObject* Sender) {
 	hwnd1 = RzPanel1->Handle;
 	dc1 = GetDC(hwnd1);
@@ -58,8 +58,8 @@ void __fastcall TfrmGL::FormCreate(TObject* Sender) {
 }
 
 /* =======================================================================
- Рисование картинки *//* ======================================================================
- Перевод цвета из TColor в OpenGL */
+ Р РёСЃРѕРІР°РЅРёРµ РєР°СЂС‚РёРЅРєРё *//* ======================================================================
+ РџРµСЂРµРІРѕРґ С†РІРµС‚Р° РёР· TColor РІ OpenGL */
 void __fastcall TfrmGL::ColorToGL(TColor c, GLfloat &R, GLfloat &G, GLfloat &B) {
 	R = (GLfloat)(c & 0xFF) / 255;
 	G = (GLfloat)((c & 0xFF00) >> 8) / 255;
@@ -68,7 +68,7 @@ void __fastcall TfrmGL::ColorToGL(TColor c, GLfloat &R, GLfloat &G, GLfloat &B) 
 }
 
 /* =======================================================================
- Конец работы приложения */
+ РљРѕРЅРµС† СЂР°Р±РѕС‚С‹ РїСЂРёР»РѕР¶РµРЅРёСЏ */
 void __fastcall TfrmGL::FormDestroy(TObject *Sender) {
 	wglDeleteContext(hrc1);
 	wglDeleteContext(hrc2);
@@ -98,13 +98,13 @@ void __fastcall TfrmGL::RzPanel1Paint(TObject *Sender) {
 
 	// BeginPaint(hwnd2, &ps);
 	wglMakeCurrent(dc1, hrc1);
-	glViewport(0, 0, RzPanel1->Width, RzPanel1->Height); // область вывода
-	glClearColor(R, G, B, 1.0); // цвет фона
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
-	glPointSize(5); // размер точек
-	glColor3f(1.0, 0.0, 0.5); // текущий цвет примитивов
+	glViewport(0, 0, RzPanel1->Width, RzPanel1->Height); // РѕР±Р»Р°СЃС‚СЊ РІС‹РІРѕРґР°
+	glClearColor(R, G, B, 1.0); // С†РІРµС‚ С„РѕРЅР°
+	glClear(GL_COLOR_BUFFER_BIT); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° С†РІРµС‚Р°
+	glPointSize(5); // СЂР°Р·РјРµСЂ С‚РѕС‡РµРє
+	glColor3f(1.0, 0.0, 0.5); // С‚РµРєСѓС‰РёР№ С†РІРµС‚ РїСЂРёРјРёС‚РёРІРѕРІ
 	glEnable(GL_POINT_SMOOTH);
-	glBegin(GL_POINTS); // открываем командную скобку
+	glBegin(GL_POINTS); // РѕС‚РєСЂС‹РІР°РµРј РєРѕРјР°РЅРґРЅСѓСЋ СЃРєРѕР±РєСѓ
 	glVertex2f(-1, -1);
 	glVertex2f(-1, 1);
 	glVertex2f(0, 0);
@@ -113,9 +113,9 @@ void __fastcall TfrmGL::RzPanel1Paint(TObject *Sender) {
 
 	GLfloat a, b, x;
 	GLint i, num;
-	a = -M_PI; // начало интервала
-	b = M_PI; // конец интервала
-	num = 2000; // количество точек на интервале
+	a = -M_PI; // РЅР°С‡Р°Р»Рѕ РёРЅС‚РµСЂРІР°Р»Р°
+	b = M_PI; // РєРѕРЅРµС† РёРЅС‚РµСЂРІР°Р»Р°
+	num = 2000; // РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕС‡РµРє РЅР° РёРЅС‚РµСЂРІР°Р»Рµ
 
 	for (i = 0; i <= num; i++) {
 		x = a + i * (b - a) / num;
@@ -152,13 +152,13 @@ void __fastcall TfrmGL::OpenGL1Click(TObject *Sender)
 
 	// BeginPaint(hwnd2, &ps);
 	wglMakeCurrent(dc2, hrc2);
-	glViewport(0, 0, RzPanel2->Width, RzPanel2->Height); // область вывода
-	glClearColor(R, G, B, 1.0); // цвет фона
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
-	glPointSize(5); // размер точек
-	glColor3f(1.0, 0.0, 0.5); // текущий цвет примитивов
+	glViewport(0, 0, RzPanel2->Width, RzPanel2->Height); // РѕР±Р»Р°СЃС‚СЊ РІС‹РІРѕРґР°
+	glClearColor(R, G, B, 1.0); // С†РІРµС‚ С„РѕРЅР°
+	glClear(GL_COLOR_BUFFER_BIT); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° С†РІРµС‚Р°
+	glPointSize(5); // СЂР°Р·РјРµСЂ С‚РѕС‡РµРє
+	glColor3f(1.0, 0.0, 0.5); // С‚РµРєСѓС‰РёР№ С†РІРµС‚ РїСЂРёРјРёС‚РёРІРѕРІ
 	glEnable(GL_POINT_SMOOTH);
-	glBegin(GL_POINTS); // открываем командную скобку
+	glBegin(GL_POINTS); // РѕС‚РєСЂС‹РІР°РµРј РєРѕРјР°РЅРґРЅСѓСЋ СЃРєРѕР±РєСѓ
 	glVertex2f(-1, -1);
 	glVertex2f(-1, 1);
 	glVertex2f(0, 0);
@@ -167,9 +167,9 @@ void __fastcall TfrmGL::OpenGL1Click(TObject *Sender)
 
 	GLfloat a, b, x;
 	GLint i, num;
-	a = -M_PI; // начало интервала
-	b = M_PI; // конец интервала
-	num = 2000; // количество точек на интервале
+	a = -M_PI; // РЅР°С‡Р°Р»Рѕ РёРЅС‚РµСЂРІР°Р»Р°
+	b = M_PI; // РєРѕРЅРµС† РёРЅС‚РµСЂРІР°Р»Р°
+	num = 2000; // РєРѕР»РёС‡РµСЃС‚РІРѕ С‚РѕС‡РµРє РЅР° РёРЅС‚РµСЂРІР°Р»Рµ
 
 	for (i = 0; i <= num; i++) {
 		x = a + i * (b - a) / num;
@@ -199,9 +199,9 @@ void __fastcall TfrmGL::OpenGLGDI2Click(TObject *Sender) {
 
 	// BeginPaint(hwnd2, &ps);
 	wglMakeCurrent(dc2, hrc2);
-	glViewport(0, 0, RzPanel2->Width, RzPanel2->Height); // область вывода
-	glClearColor(R, G, B, 1.0); // цвет фона
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
+	glViewport(0, 0, RzPanel2->Width, RzPanel2->Height); // РѕР±Р»Р°СЃС‚СЊ РІС‹РІРѕРґР°
+	glClearColor(R, G, B, 1.0); // С†РІРµС‚ С„РѕРЅР°
+	glClear(GL_COLOR_BUFFER_BIT); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° С†РІРµС‚Р°
 
 	SwapBuffers(dc2);
 	wglMakeCurrent(0, 0);
@@ -219,7 +219,7 @@ void __fastcall TfrmGL::OpenGLlines1Click(TObject *Sender) {
 	SetDCPixelFormat(dc2);
 	hrc2 = wglCreateContext(dc2);
 	wglMakeCurrent(dc2, hrc2);
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
+	glClear(GL_COLOR_BUFFER_BIT); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° С†РІРµС‚Р°
 	// glLineWidth (1);
 	glEnable(GL_LINE_SMOOTH);
 	glBegin(GL_LINES);
@@ -242,12 +242,12 @@ void __fastcall TfrmGL::OpenGLOxOy1Click(TObject *Sender)
 	SetDCPixelFormat(dc2);
 	hrc2 = wglCreateContext(dc2);
 	wglMakeCurrent(dc2, hrc2);
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
+	glClear(GL_COLOR_BUFFER_BIT); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° С†РІРµС‚Р°
 
-	glPointSize(5); // размер точек
-	glColor3f(1.0, 0.0, 0.5); // текущий цвет примитивов
+	glPointSize(5); // СЂР°Р·РјРµСЂ С‚РѕС‡РµРє
+	glColor3f(1.0, 0.0, 0.5); // С‚РµРєСѓС‰РёР№ С†РІРµС‚ РїСЂРёРјРёС‚РёРІРѕРІ
 	glEnable(GL_POINT_SMOOTH);
-	glBegin(GL_POINTS); // открываем командную скобку
+	glBegin(GL_POINTS); // РѕС‚РєСЂС‹РІР°РµРј РєРѕРјР°РЅРґРЅСѓСЋ СЃРєРѕР±РєСѓ
 	glVertex2f(0, 0);
 	glEnd();
 
@@ -314,7 +314,7 @@ void __fastcall TfrmGL::OpenGLlinesstrip1Click(TObject *Sender) {
 	hrc2 = wglCreateContext(dc2);
 	wglMakeCurrent(dc2, hrc2);
 
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
+	glClear(GL_COLOR_BUFFER_BIT); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° С†РІРµС‚Р°
 
 	glColor3f(1.0, 1.0, 1.0);
 	glLineWidth(2);
@@ -342,7 +342,7 @@ void __fastcall TfrmGL::OpenGLlinesloop1Click(TObject *Sender)
 	hrc2 = wglCreateContext(dc2);
 	wglMakeCurrent(dc2, hrc2);
 
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
+	glClear(GL_COLOR_BUFFER_BIT); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° С†РІРµС‚Р°
 
 	glColor3f(1.0, 1.0, 1.0);
 	glLineWidth(2);
@@ -381,8 +381,8 @@ void __fastcall TfrmGL::Randomlines1Click(TObject *Sender) {
 		hrc2 = wglCreateContext(dc2);
 
 		wglMakeCurrent(dc2, hrc2);
-		// glViewport(0, 0, RzPanel2->Width, RzPanel2->Height); // область вывода
-		glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
+		// glViewport(0, 0, RzPanel2->Width, RzPanel2->Height); // РѕР±Р»Р°СЃС‚СЊ РІС‹РІРѕРґР°
+		glClear(GL_COLOR_BUFFER_BIT); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° С†РІРµС‚Р°
 		// glEnable(GL_LINE_STIPPLE);
 		GLint i;
 		for (i = 1; i < 50; i++) {
@@ -419,9 +419,9 @@ void __fastcall TfrmGL::riangles1Click(TObject *Sender)
 	hrc2 = wglCreateContext(dc2);
 	wglMakeCurrent(dc2, hrc2);
 
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
+	glClear(GL_COLOR_BUFFER_BIT); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° С†РІРµС‚Р°
 
-	glColor3f(1.0, 0.0, 0.5); // текущий цвет примитивов
+	glColor3f(1.0, 0.0, 0.5); // С‚РµРєСѓС‰РёР№ С†РІРµС‚ РїСЂРёРјРёС‚РёРІРѕРІ
 	// glBegin(GL_TRIANGLES);
 	// glVertex2f(-1, -1);
 	// glVertex2f(-1, 1);
@@ -429,14 +429,14 @@ void __fastcall TfrmGL::riangles1Click(TObject *Sender)
 	// glEnd();
 
 	// glBegin(GL_TRIANGLE_FAN);
-	// glVertex2f(0.8, 0.8); // вершина, общая для всех треугольников
+	// glVertex2f(0.8, 0.8); // РІРµСЂС€РёРЅР°, РѕР±С‰Р°СЏ РґР»СЏ РІСЃРµС… С‚СЂРµСѓРіРѕР»СЊРЅРёРєРѕРІ
 	// for (GLint i = 0; i <= 6; i++) {
 	// glColor3f(Random(), Random(), Random());
 	// glVertex2f(0.9 * cos(2 * Pi * i / 6), 0.9 * sin(2 * Pi * i / 6));
 	// }
 	// glEnd();
 
-	// glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // треугольники будут рисоваться контурно - только линии границ
+	// glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // С‚СЂРµСѓРіРѕР»СЊРЅРёРєРё Р±СѓРґСѓС‚ СЂРёСЃРѕРІР°С‚СЊСЃСЏ РєРѕРЅС‚СѓСЂРЅРѕ - С‚РѕР»СЊРєРѕ Р»РёРЅРёРё РіСЂР°РЅРёС†
 	glBegin(GL_TRIANGLE_STRIP);
 	for (GLint i = 0; i <= 20; i++) {
 		glColor3f(Random(), Random(), Random());
@@ -468,9 +468,9 @@ void __fastcall TfrmGL::Rectangle1Click(TObject *Sender)
 	hrc2 = wglCreateContext(dc2);
 	wglMakeCurrent(dc2, hrc2);
 
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
-	glPointSize(1); // размер точек
-	glColor3f(1.0, 0.5, 0.5); // текущий цвет примитивов
+	glClear(GL_COLOR_BUFFER_BIT); // РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° С†РІРµС‚Р°
+	glPointSize(1); // СЂР°Р·РјРµСЂ С‚РѕС‡РµРє
+	glColor3f(1.0, 0.5, 0.5); // С‚РµРєСѓС‰РёР№ С†РІРµС‚ РїСЂРёРјРёС‚РёРІРѕРІ
 	glRectf(-0.8, -0.8, -0.5, -0.5);
 
 	glBegin(GL_QUADS);
@@ -501,9 +501,9 @@ void __fastcall TfrmGL::Disk1Click(TObject *Sender)
 	hrc2 = wglCreateContext(dc2);
 	wglMakeCurrent(dc2, hrc2);
 
-	GLint Level = 200; // уровень детализации
-	GLfloat radius1 = 0.4; // радиус внутреннего отверстия
-	GLfloat radius2 = 0.7; // радиус внешней кромки
+	GLint Level = 200; // СѓСЂРѕРІРµРЅСЊ РґРµС‚Р°Р»РёР·Р°С†РёРё
+	GLfloat radius1 = 0.4; // СЂР°РґРёСѓСЃ РІРЅСѓС‚СЂРµРЅРЅРµРіРѕ РѕС‚РІРµСЂСЃС‚РёСЏ
+	GLfloat radius2 = 0.7; // СЂР°РґРёСѓСЃ РІРЅРµС€РЅРµР№ РєСЂРѕРјРєРё
 	GLuint i;
 
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -561,15 +561,15 @@ void __fastcall TfrmGL::DrawVertexArray1Click(TObject *Sender) {
 	Colors[3][1] = 0.85;
 	Colors[3][2] = 0.1;
 
-	glVertexPointer(2, GL_FLOAT, 0, Vertex); // указатель на массив вершин
-	glColorPointer(3, GL_FLOAT, 0, Colors); // указатель на массив цветов
+	glVertexPointer(2, GL_FLOAT, 0, Vertex); // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РјР°СЃСЃРёРІ РІРµСЂС€РёРЅ
+	glColorPointer(3, GL_FLOAT, 0, Colors); // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РјР°СЃСЃРёРІ С†РІРµС‚РѕРІ
 
-	glEnableClientState(GL_VERTEX_ARRAY); // массив вершин - включаем режим
-	glEnableClientState(GL_COLOR_ARRAY); // массив цветов - включаем режим
+	glEnableClientState(GL_VERTEX_ARRAY); // РјР°СЃСЃРёРІ РІРµСЂС€РёРЅ - РІРєР»СЋС‡Р°РµРј СЂРµР¶РёРј
+	glEnableClientState(GL_COLOR_ARRAY); // РјР°СЃСЃРёРІ С†РІРµС‚РѕРІ - РІРєР»СЋС‡Р°РµРј СЂРµР¶РёРј
 
 	glBegin(GL_POLYGON); //
 	glArrayElement(0); //
-	glArrayElement(1); // эквивалени glDrawArrays(GL_POLYGON, 0, 4); // рисование множества полигонов
+	glArrayElement(1); // СЌРєРІРёРІР°Р»РµРЅРё glDrawArrays(GL_POLYGON, 0, 4); // СЂРёСЃРѕРІР°РЅРёРµ РјРЅРѕР¶РµСЃС‚РІР° РїРѕР»РёРіРѕРЅРѕРІ
 	glArrayElement(2); //
 	glArrayElement(3); //
 	glEnd();
