@@ -173,8 +173,6 @@ object frmGL: TfrmGL
     UsePercent = True
     Align = alClient
     TabOrder = 2
-    ExplicitTop = 29
-    ExplicitHeight = 538
     BarSize = (
       491
       0
@@ -190,11 +188,10 @@ object frmGL: TfrmGL
       Width = 491
       Height = 536
       Align = alClient
-      BorderOuter = fsFlat
+      BorderOuter = fsNone
       TabOrder = 0
+      OnMouseMove = RzPanel1MouseMove
       OnPaint = RzPanel1Paint
-      OnResize = RzPanel1Paint
-      ExplicitHeight = 538
     end
     object RzPanel2: TRzPanel
       Left = 0
@@ -206,14 +203,13 @@ object frmGL: TfrmGL
       TabOrder = 0
       OnMouseMove = RzPanel2MouseMove
       OnPaint = RzPanel2Paint
-      ExplicitHeight = 538
     end
   end
   object ImageList1: TImageList
     Left = 152
     Top = 48
     Bitmap = {
-      494C01010E003400480010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E0034004C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -756,7 +752,7 @@ object frmGL: TfrmGL
     Left = 88
     Top = 48
     object OpenGL1: TMenuItem
-      Caption = 'OpenGL compare'
+      Caption = 'OpenGL Plot sin (x) '
       OnClick = OpenGL1Click
     end
     object OpenGLGDI1: TMenuItem
@@ -811,6 +807,10 @@ object frmGL: TfrmGL
     object P1: TMenuItem
       Caption = 'Draw Pixels'
       OnClick = P1Click
+    end
+    object RadarCircle1: TMenuItem
+      Caption = 'Radar Circle'
+      OnClick = RadarCircle1Click
     end
   end
 end
