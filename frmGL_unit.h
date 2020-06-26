@@ -14,6 +14,7 @@
 #include "RzButton.hpp"
 #include <ImgList.hpp>
 #include <Dialogs.hpp>
+#include <Math.hpp>
 #include <math.h>
 #include "RzSplit.hpp"
 #include <Menus.hpp>
@@ -21,9 +22,43 @@
 #include <GL/glu.h>
 #define Pi M_PI
 
+enum TStateInput {
+	siNone, siManualDrag, siSector, siCircle, siClick
+};
+
+struct TColorGL {
+	float R, G, B, a;
+};
+
+struct TRecSector {
+	float dA, dD, Angl, D;
+	int UserID;
+	TColorGL Color;
+	bool Enable;
+};
+
+struct TRecGPSFloat {
+	float x, y, z, m;
+	TStateInput State;
+};
+
+const GLfloat MC[4] = {0.5, 0.0, 1.0, 1.0}; // массив свойств материала
+
+GLfloat ColorGLObj[4];
+GLfloat ObjColor[4] = {0, 1, 0, 0.5};
+GLfloat KMPColorGLObj[4] = {0.6, 0.6, 0, 0.5};
+GLfloat TColorGLObj[4] = {0, 1, 0, 0.5};
+GLfloat WColorGLObj[4] = {0, 1, 0.3, 0.5};
+GLfloat AColorGLObj[4] = {1, 0, 0, 1};
+GLfloat SelColorGLObj[4] = {1, 1, 1, 1};
+GLfloat SecColorGLObj[4] = {1, 1, 0.1, 0.9};
+GLfloat UookColorGLObj[4] = {153 / 255, 153 / 255, 1, 1};
+GLfloat UookModColorGLObj[4] = {1, 0, 0, 1};
+
 // ---------------------------------------------------------------------------
 class TfrmGL : public TForm {
 __published: // IDE-managed Components
+
 	TRzStatusBar *RzStatusBar1;
 	TRzToolbar *RzToolbar1;
 	TRzClockStatus *RzClockStatus1;
@@ -55,10 +90,11 @@ __published: // IDE-managed Components
 	TRzFieldStatus *RzGL_VENDOR;
 	TRzFieldStatus *RzGL_RENDERER;
 	TRzFieldStatus *RzGL_VERSION;
+	TMenuItem *RadarCircle1;
+
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormDestroy(TObject *Sender);
 	void __fastcall RzToolButton1Click(TObject *Sender);
-	void __fastcall RzPanel1Paint(TObject *Sender);
 	void __fastcall OpenGLGDI2Click(TObject *Sender);
 	void __fastcall OpenGL1Click(TObject *Sender);
 	void __fastcall OpenGLlines1Click(TObject *Sender);
@@ -75,19 +111,53 @@ __published: // IDE-managed Components
 	void __fastcall DrawVertexArray1Click(TObject *Sender);
 	void __fastcall DrawVertexArrayround1Click(TObject *Sender);
 	void __fastcall P1Click(TObject *Sender);
+	void __fastcall RadarCircle1Click(TObject *Sender);
+	void __fastcall RzPanel1Paint(TObject *Sender);
+	void __fastcall RzPanel1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
 
 private: // User declarations
-	HWND hwnd1,hwnd2;
-	HGLRC hrc1,hrc2;
-	HDC dc1,dc2;
+
+	void __fastcall InitializeRC();
+
+	HWND hwnd1, hwnd2;
+	HGLRC hrc1, hrc2;
+	HDC dc1, dc2;
 	GLfloat R, G, B, xpos, ypos;
 	bool mode1;
+	GLfloat MCGrid[4];
+	GLfloat MCPoint[4];
+	GLfloat MCTarget[4];
+	GLfloat tX, tY, DX, DY;
+	TColorGL Cl;
+	int FBreakPosSector;
+	float FOldSectorPos;
+	TPoint FLastMousePoint;
+
+	TRecSector __fastcall ConvertCoordToStrob(float X1, float Y1, float X2, float Y2);
+	TRecSector __fastcall ConvertCoordToStrob();
+	void __fastcall PaintSector(TColorGL Cl, float dA, float dD, float Angl, float D, float Opacity);
+	void __fastcall PaintCurrentSector();
 	void __fastcall SetDCPixelFormat(HDC hdc);
 	void __fastcall ColorToGL(TColor c, GLfloat &R, GLfloat &G, GLfloat &B);
+	void __fastcall PaintCurrentCircle();
+	void __fastcall PaintGrid();
+	void __fastcall PaintCurve();
+	void __fastcall PaintTarget();
+	void __fastcall DrawWall();
+	void __fastcall DrawAxis();
+	void __fastcall myPaint();
+	void __fastcall PaintGL();
+	void __fastcall InitViewProection();
+	void __fastcall InitViewProection(float x, float y, float dXX, float dYY);
+
 public: // User declarations
 
 	__fastcall TfrmGL(TComponent* Owner);
 
+	TRecGPSFloat MousePosMove, MousePosDown, GPSCursor0, GPSCursor1, ResultShiftScene;
+	float PosZoomX1, PosZoomY1, PosZoomX2, PosZoomY2, Diagonal, Zoom;
+
+	void __fastcall UpdateOGL();
 	// void __fastcall WMPaint(TWMPaint Msg );
 	// BEGIN_MESSAGE_MAP
 	// MESSAGE_HANDLER(WM_PAINT, TWMPaint, WMPaint)
