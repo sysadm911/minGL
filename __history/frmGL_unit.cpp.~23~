@@ -55,8 +55,7 @@ void __fastcall TfrmGL::FormCreate(TObject* Sender) {
 	xpos = RzPanel2->Width / 2.;
 	ypos = RzPanel2->Height / 2.;
 
-	quadObj = gluNewQuadric();
-	gluQuadricDrawStyle(quadObj, GLU_LINE);
+	 quadObj = gluNewQuadric();
 
 	PosZoomX1 = -1;
 	PosZoomX2 = -1;
@@ -1455,101 +1454,44 @@ void __fastcall TfrmGL::Cube1Click(TObject *Sender) {
 }
 // ---------------------------------------------------------------------------
 
-void __fastcall TfrmGL::GLUTfigures1Click(TObject *Sender) {
+void __fastcall TfrmGL::GLUTfigures1Click(TObject *Sender)
 
+{
+	hrc2 = wglCreateContext(dc2);
 	wglMakeCurrent(dc2, hrc2);
-
-	glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
-
-	gluPerspective(60.0, ClientWidth / ClientHeight, 1.0, 20.0);
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-
-	glClearColor(0.5, 0.5, 0.75, 1.0); // цвет фона
-	glColor3f(1.0, 0.0, 0.0);
-
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
+	glClearColor(0.0, 0.0, 0.0, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT);
 
 	glPushMatrix();
+	gluQuadricDrawStyle(quadObj, GLU_FILL);
+	glColor3f(1.0, 1.0, 1.0);
+	glTranslatef(10.0, 10.0, 0.0);
+	gluDisk(quadObj, 0.0, 5.0, 10, 2);
+	glPopMatrix();
 
-	glTranslatef(0.0, 0.0, -3.0);
+	glPushMatrix();
+	glColor3f(1.0, 1.0, 0.0);
+	glTranslatef(20.0, 20.0, 0.0);
+	gluPartialDisk(quadObj, 0.0, 5.0, 10, 3, 30.0, 120.0);
+	glPopMatrix();
 
-	gluSphere(quadObj, 1.0, 15, 10);
-	glTranslatef(1, 1, 1);
-	glutSolidCube(1);
+	glPushMatrix();
+	gluQuadricDrawStyle(quadObj, GLU_SILHOUETTE);
+	glColor3f(0.0, 1.0, 1.0);
+	glTranslatef(30.0, 30.0, 0.0);
+	gluPartialDisk(quadObj, 0.0, 5.0, 10, 3, 135.0, 270.0);
+	glPopMatrix();
 
+	glPushMatrix();
+	gluQuadricDrawStyle(quadObj, GLU_LINE);
+	glColor3f(1.0, 0.0, 1.0);
+	glTranslatef(40.0, 40.0, 0.0);
+	gluDisk(quadObj, 2.0, 5.0, 10, 10);
 	glPopMatrix();
 
 	SwapBuffers(dc2);
 	wglMakeCurrent(0, 0);
 }
 
-// ---------------------------------------------------------------------------
-
-void __fastcall TfrmGL::Selectfigure1Click(TObject *Sender) {
-	if (hrc2) {
-		wglDeleteContext(hrc2);
-	}
-	hrc2 = wglCreateContext(dc2);
-	wglMakeCurrent(dc2, hrc2);
-	glClearColor(0.5, 0.5, 0.75, 1.0); // цвет фона
-	glClear(GL_COLOR_BUFFER_BIT); // очистка буфера цвета
-
-	// красный треугольник-- -
-	glColor3f(1.0, 0.0, 0.0); // текущий цвет примитивов
-	glBegin(GL_TRIANGLES);
-	glVertex2f(-1, -1);
-	glVertex2f(-1, 1);
-	glVertex2f(-0.1, 0);
-	glEnd();
-
-	// синий треугольник-- -
-	glColor3f(0.0, 0.0, 1.0); // текущий цвет примитивов
-	glBegin(GL_TRIANGLES);
-	glVertex2f(0.1, 0);
-	glVertex2f(1, 1);
-	glVertex2f(1, -1);
-	glEnd();
-
-	SwapBuffers(dc2);
-	// wglMakeCurrent(0, 0);
-}
-// ---------------------------------------------------------------------------
-
-void __fastcall TfrmGL::RzPanel2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y) {
-	unsigned char wrk[3];
-	wglMakeCurrent(dc2, hrc2);
-//	glReadPixels(X, Y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, wrk);
-	 glReadPixels(X, RzPanel2->Height - Y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, wrk);
-
-	if ((wrk[0] != 0) && (wrk[2] == 0))
-		ShowMessage("Выбран красный треугольник");
-	else if ((wrk[0] == 0) && (wrk[2] != 0))
-		ShowMessage("Выбран синий треугольник");
-	else
-		ShowMessage("Ничего не выбрано");
-
-	wrk[0] = 0;
-	wrk[1] = 0;
-	wrk[2] = 0;
-	wglMakeCurrent(0, 0);
-
-}
-// ---------------------------------------------------------------------------
-
-void __fastcall TfrmGL::FormMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
-
-{
-	// unsigned char wrk[3];
-	// glReadPixels(X, Y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, wrk);
-	// if ((wrk[0] != 0) && (wrk[2] == 0))
-	// ShowMessage("Выбран красный треугольник");
-	// else if ((wrk[0] == 0) && (wrk[2] != 0))
-	// ShowMessage("Выбран синий треугольник");
-	// else
-	// ShowMessage("Ничего не выбрано");
-
-}
 // ---------------------------------------------------------------------------
 

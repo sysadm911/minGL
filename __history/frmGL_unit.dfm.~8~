@@ -16,7 +16,6 @@ object frmGL: TfrmGL
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
-  OnMouseDown = FormMouseDown
   PixelsPerInch = 96
   TextHeight = 13
   object RzStatusBar1: TRzStatusBar
@@ -194,8 +193,6 @@ object frmGL: TfrmGL
       TabOrder = 0
       OnMouseMove = RzPanel1MouseMove
       OnPaint = RzPanel1Paint
-      ExplicitLeft = -2
-      ExplicitTop = 3
     end
     object RzPanel2: TRzPanel
       Left = 0
@@ -205,7 +202,6 @@ object frmGL: TfrmGL
       Align = alClient
       BorderOuter = fsFlat
       TabOrder = 0
-      OnMouseDown = RzPanel2MouseDown
       OnMouseMove = RzPanel2MouseMove
       OnPaint = RzPanel2Paint
     end

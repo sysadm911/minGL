@@ -18,8 +18,6 @@
 #include <math.h>
 #include "RzSplit.hpp"
 #include <Menus.hpp>
-
-#include <GL/glut.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #define Pi M_PI
@@ -96,7 +94,6 @@ __published: // IDE-managed Components
 	TMenuItem *Rotation1;
 	TMenuItem *Cube1;
 	TMenuItem *GLUTfigures1;
-	TMenuItem *Selectfigure1;
 
 	void __fastcall FormCreate(TObject *Sender);
 	void __fastcall FormDestroy(TObject *Sender);
@@ -124,9 +121,6 @@ __published: // IDE-managed Components
 	void __fastcall FormKeyPress(TObject *Sender, wchar_t &Key);
 	void __fastcall Cube1Click(TObject *Sender);
 	void __fastcall GLUTfigures1Click(TObject *Sender);
-	void __fastcall Selectfigure1Click(TObject *Sender);
-	void __fastcall RzPanel2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
-	void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 
 private: // User declarations
 
@@ -145,7 +139,6 @@ private: // User declarations
 	int FBreakPosSector;
 	float FOldSectorPos;
 	TPoint FLastMousePoint;
-	GLUquadricObj *quadObj;
 
 	TRecSector __fastcall ConvertCoordToStrob(float X1, float Y1, float X2, float Y2);
 	TRecSector __fastcall ConvertCoordToStrob();

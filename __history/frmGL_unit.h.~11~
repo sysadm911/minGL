@@ -125,8 +125,6 @@ __published: // IDE-managed Components
 	void __fastcall Cube1Click(TObject *Sender);
 	void __fastcall GLUTfigures1Click(TObject *Sender);
 	void __fastcall Selectfigure1Click(TObject *Sender);
-	void __fastcall RzPanel2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
-	void __fastcall FormMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y);
 
 private: // User declarations
 
