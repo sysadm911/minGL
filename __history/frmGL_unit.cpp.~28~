@@ -1513,42 +1513,19 @@ void __fastcall TfrmGL::Selectfigure1Click(TObject *Sender) {
 	glEnd();
 
 	SwapBuffers(dc2);
-	// wglMakeCurrent(0, 0);
+	wglMakeCurrent(0, 0);
 }
 // ---------------------------------------------------------------------------
 
 void __fastcall TfrmGL::RzPanel2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y) {
-	unsigned char wrk[3];
-	wglMakeCurrent(dc2, hrc2);
-//	glReadPixels(X, Y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, wrk);
-	 glReadPixels(X, RzPanel2->Height - Y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, wrk);
-
+	GLubyte wrk[3];
+	glReadPixels(X, Y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, wrk);
 	if ((wrk[0] != 0) && (wrk[2] == 0))
 		ShowMessage("Выбран красный треугольник");
-	else if ((wrk[0] == 0) && (wrk[2] != 0))
-		ShowMessage("Выбран синий треугольник");
-	else
-		ShowMessage("Ничего не выбрано");
-
-	wrk[0] = 0;
-	wrk[1] = 0;
-	wrk[2] = 0;
-	wglMakeCurrent(0, 0);
-
-}
-// ---------------------------------------------------------------------------
-
-void __fastcall TfrmGL::FormMouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift, int X, int Y)
-
-{
-	// unsigned char wrk[3];
-	// glReadPixels(X, Y, 1, 1, GL_RGB, GL_UNSIGNED_BYTE, wrk);
-	// if ((wrk[0] != 0) && (wrk[2] == 0))
-	// ShowMessage("Выбран красный треугольник");
-	// else if ((wrk[0] == 0) && (wrk[2] != 0))
-	// ShowMessage("Выбран синий треугольник");
-	// else
-	// ShowMessage("Ничего не выбрано");
+		else if ((wrk[0] != 0) && (wrk[2] != 0))
+			ShowMessage("Выбран синий треугольник");
+			else
+				ShowMessage("Ничего не выбрано");
 
 }
 // ---------------------------------------------------------------------------

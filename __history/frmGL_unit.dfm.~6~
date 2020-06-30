@@ -16,7 +16,6 @@ object frmGL: TfrmGL
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
-  OnMouseDown = FormMouseDown
   PixelsPerInch = 96
   TextHeight = 13
   object RzStatusBar1: TRzStatusBar
@@ -203,7 +202,6 @@ object frmGL: TfrmGL
       Align = alClient
       BorderOuter = fsFlat
       TabOrder = 0
-      OnMouseDown = RzPanel2MouseDown
       OnMouseMove = RzPanel2MouseMove
       OnPaint = RzPanel2Paint
     end
@@ -822,14 +820,6 @@ object frmGL: TfrmGL
     object Cube1: TMenuItem
       Caption = 'Cube'
       OnClick = Cube1Click
-    end
-    object GLUTfigures1: TMenuItem
-      Caption = 'GLUT figures'
-      OnClick = GLUTfigures1Click
-    end
-    object Selectfigure1: TMenuItem
-      Caption = 'Select figure'
-      OnClick = Selectfigure1Click
     end
   end
 end
